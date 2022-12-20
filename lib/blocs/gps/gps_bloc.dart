@@ -29,7 +29,7 @@ class GpsBloc extends Bloc<GpsEvent, GpsState> {
 
     final gpsInitStatus = await Future.wait([
       _checkGpsStatus(),
-      _checkGpsStatus()
+      _isPermissionGranted()
     ]);
      
     add( GpsAndPermissionsEvent(

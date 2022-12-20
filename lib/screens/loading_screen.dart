@@ -12,7 +12,8 @@ const LoadingScreen({ Key? key }) : super(key: key);
     return Scaffold(
      body:  BlocBuilder<GpsBloc, GpsState> (
         builder: (context, state) {
-          return state.isAllGranted 
+          print('@DEBUUUUUG state ${state.isGpsPermissionGranted}');
+          return (state.isAllGranted ) 
             ? const MapScreen()
             : const GpsAccessScreen();
         }
