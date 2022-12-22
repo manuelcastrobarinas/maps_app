@@ -12,7 +12,7 @@ class GpsAccessScreen extends StatelessWidget {
       body: Center(
         child: BlocBuilder<GpsBloc, GpsState>(
           builder: (context, state) {
-            print("@DEBUG ESTADO DEL GPS $state ");
+            // print("@DEBUG ESTADO DEL GPS $state ");
             return !state.isGpsEnabled
               ? const _EnableGPSmessage() 
               : const _AccessButton();

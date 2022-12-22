@@ -23,7 +23,6 @@ class GpsBloc extends Bloc<GpsEvent, GpsState> {
     _init();
   }
 
-  //ANDROID CONFIGURATION
   Future<void> _init() async { // se ejecuta al inicialiar la app
    
 
@@ -43,7 +42,7 @@ class GpsBloc extends Bloc<GpsEvent, GpsState> {
 
     gpsServiceSubscription = Geolocator.getServiceStatusStream().listen((event) {
       final isEnabled = ( event.index == 1 ) ? true : false; //este stream funciona devolviendo  1 o 0 por ello esta evaluacion
-      print('service status $isEnabled'); 
+      // print('service status $isEnabled'); 
       add( GpsAndPermissionsEvent(
         isGpsEnabled: isEnabled,
         isGpsPermissionGranted: state.isGpsPermissionGranted,
