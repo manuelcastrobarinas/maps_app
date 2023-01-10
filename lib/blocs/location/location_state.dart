@@ -5,7 +5,7 @@ class LocationState extends Equatable {
   final bool followingUser;
   final LatLng? lastKnownLocation;      //ultimo geolocation conocida
   final List<LatLng> myLocationHistory; //histirial de las ultimas ubicaciones
-  
+
   const LocationState({
       this.followingUser = false,
       this.lastKnownLocation,

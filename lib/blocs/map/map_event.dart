@@ -14,3 +14,16 @@ class OnMapInitialEvent extends MapEvent {
 
   const OnMapInitialEvent(this.controller);
 }
+
+
+class StopFollowingUserEvent extends MapEvent {}
+
+class StartFollowingUserEvent extends MapEvent {}
+
+class UpdateUserPolylinesEvent extends MapEvent {
+  final List<LatLng> userLocations;
+
+  const UpdateUserPolylinesEvent({ required this.userLocations });
+}
+
+class OnToggleUserRoute extends MapEvent {}
