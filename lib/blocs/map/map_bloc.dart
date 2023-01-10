@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
@@ -14,6 +15,8 @@ class MapBloc extends Bloc<MapEvent, MapState> {
   final LocationBloc locationBloc;
   GoogleMapController?
       _mapController; //controller que permite el acceso al manejo de elementos en el mapa
+
+  StreamSubscription<LocationState>? locationStateSubscription;
 
   MapBloc({required this.locationBloc}) : super(const MapState()) {
     
@@ -71,5 +74,11 @@ class MapBloc extends Bloc<MapEvent, MapState> {
     currentPolylines['MyRoute'] = myRoute;
 
     emit(state.copyWith(polylines: currentPolylines));
+  }
+
+  @override 
+  Future<void> close() {
+    locationStateSubscription?.cancel();
+    return super.close();
   }
 }
