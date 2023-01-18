@@ -7,11 +7,13 @@ import 'package:rutas_app/blocs/blocs.dart';
 class MapView extends StatelessWidget {
   final LatLng initialLocation;
   final Set<Polyline> polylines;
+  final Set<Marker> markers;
 
   const MapView({
     super.key, 
     required this.initialLocation, 
-    required this.polylines
+    required this.polylines,
+    required this.markers
   });
 
   @override
@@ -33,10 +35,10 @@ class MapView extends StatelessWidget {
           myLocationEnabled: true,
           zoomControlsEnabled: false,
           myLocationButtonEnabled: false,
-          polylines: polylines,
+          polylines: polylines,     //rutas del mapa
           onMapCreated: (controller) => mapBloc.add(OnMapInitialEvent(controller)),
-          //TODO: Markers
-          //TODO: Polylines
+          onCameraMove: ( position ) => mapBloc.mapCenter = position.target, //esto se dispara cada que la camara se mueve, y obtine las cordenadas de ese lugar que se van a guardar en el map center del MapBloc
+          markers: markers, //marcadores del mapa
         ),
       ),
     );

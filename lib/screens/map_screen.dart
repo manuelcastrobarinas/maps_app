@@ -4,6 +4,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:rutas_app/blocs/blocs.dart';
 import 'package:rutas_app/ui/custom_snackbar.dart';
 import 'package:rutas_app/views/views.dart';
+import 'package:rutas_app/widgets/routes_search/manual_marker.dart';
+import 'package:rutas_app/widgets/routes_search/searchbar.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({Key? key}) : super(key: key);
@@ -56,8 +58,11 @@ class _MapScreenState extends State<MapScreen> {
                   children: [
                     MapView(
                       initialLocation: stateLocation.lastKnownLocation!,
-                      polylines: polylines.values.toSet(),
-                    )
+                      polylines : polylines.values.toSet(),      // enviamos las polylines al mapa
+                      markers   : state.markers.values.toSet(), // enviamos los marcadores al mapa
+                    ),
+                    const SearchBarComponent(),
+                    const ManualMarkerComponent()
                   ]
                 ),
               );
